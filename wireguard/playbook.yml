@@ -1,0 +1,89 @@
+---
+- name: setup vpn clients
+  hosts: client
+  become: yes
+  tasks:
+  - name: install wireguard package
+    become: yes
+    apt:
+      name: wireguard
+      state: present
+      update_cache: yes
+
+  - name: generate private key
+    shell:
+      cmd: umask 077 && wg genkey | tee privatekey | wg pubkey > publickey
+      chdir: /etc/wireguard
+      creates: /etc/wireguard/publickey
+
+  - name: Get public key
+    ansible.builtin.fetch:
+      src: /etc/wireguard/publickey
+      dest: ./script/tmp/{{ hostvars[inventory_hostname].vpn_ip }}
+      flat: yes
+
+  - name: create client wireguard config
+    become: yes
+    template:
+      dest: /etc/wireguard/wg0.conf
+      src: client_wg0.conf.j2
+      owner: root
+      group: root
+      mode: '0600' 
+
+- name: setup vpn server
+  hosts: vpn_server    
+  tasks:
+  - name: install wireguard package
+    become: yes
+    apt:
+      name: wireguard
+      state: present
+      update_cache: yes
+
+  - name: create server wireguard config
+    become: yes
+    template:
+      dest: /etc/wireguard/wg0.conf
+      src: server_wg0.conf.j2
+      owner: root
+      group: root
+      mode: '0600'
+
+  - name: enable and persist ip forwarding
+    become: yes
+    sysctl:
+      name: net.ipv4.ip_forward
+      value: "1"
+      state: present
+      sysctl_set: yes
+      reload: yes
+
+  - name: start wireguard and enable on boot
+    become: yes
+    systemd:
+      name: wg-quick@wg0
+      enabled: yes
+      state: started
+  #change the paths below
+  - name: Copy script directory
+    become: yes
+    ansible.builtin.copy:
+      src: ./script
+      dest: /path/in/your/server/machine/
+  - name: Change permission on setup.sh file
+    become: yes
+    file:
+      path: /path/in/your/server/machine/script/add_client.sh
+      state: file
+      mode: 0755
+  - name: Esegui lo script sul nodo remoto
+    become: yes
+    command: /path/in/your/server/machine/script/add_client.sh
+
+- name: start vpn on clients
+  hosts: client
+  become: yes
+  tasks:
+  - name: start vpn
+    command: wg-quick up wg0

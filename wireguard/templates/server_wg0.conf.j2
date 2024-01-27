@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+[Interface]
+Address = {{ hostvars[inventory_hostname].vpn_ip }}/24
+ListenPort = {{ port }}
+PrivateKey = {{ server_privkey }}
+

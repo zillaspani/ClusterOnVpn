@@ -1,0 +1,8 @@
+---
+server_privkey: put here your encypted private key
+
+server_pubkey: put here your public key
+
+wg_subnet: 10.0.0.0/24
+
+port: 51820
