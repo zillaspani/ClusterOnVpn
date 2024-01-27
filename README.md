@@ -2,21 +2,18 @@
 #K3s Cluster with Wireguard VPN
 ## Overview
 This project involves the creation of a cluster of nodes using K3s, a lightweight Kubernetes distribution, with Wireguard employed as the VPN solution to connect these nodes securely. The goal of my work was setup a cluster of `edge devices` and ensuring the connection of them with a VPN connection. The repository includes two main folders, namely `k3s` and `Wireguard`, housing Ansible scripts for automating the setup of the cluster.
-![Testo alternativo](ClusterOnVpn/Scheme.jpg)
+## Cluster sample
+![Cluster sample](Scheme.jpg)
 
 ## Table of Contents
-
 - [Project Documentation:](#project-documentation)
   - [Overview](#overview)
+  - [Cluster sample](#cluster-sample)
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Folder Structure](#folder-structure)
   - [Step 1: Wireguard VPN](#step-1-wireguard-vpn)
-    - [Connection Setup](#connection-setup)
-  - [Step 2: k3s Setup](#step-2-k3s-setup)
-    - [Installation](#installation)
-    - [Configuration](#configuration)
-    - [Deployment](#deployment)
+  - [Step 2: K3S Setup](#step-2-k3s-setup)
   - [Usage](#usage)
   - [Troubleshooting](#troubleshooting)
   - [Script Credits](#script-credits)
@@ -40,27 +37,10 @@ pip install ansible
   - [Description of contents and purpose]
 
 ## Step 1: Wireguard VPN
-aggiusta
-[Wireguard setup](/Users/zilla/Desktop/ClusterOnVpn/wireguard/README.md)
+[Wireguard setup](wireguard/README.md)
 
-
-### Connection Setup
-
-[Explain how to set up secure connections between nodes using Wireguard.]
-
-## Step 2: k3s Setup
-
-### Installation
-
-[Provide steps or script snippets for installing K3s on the nodes.]
-
-### Configuration
-
-[Explain the configuration settings and parameters for K3s.]
-
-### Deployment
-
-[Outline the steps or Ansible playbook commands for deploying the K3s cluster.]
+## Step 2: K3S Setup
+[K3S setup](k3s/README.md)
 
 ## Usage
 
