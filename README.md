@@ -2,6 +2,7 @@
 #K3s Cluster with Wireguard VPN
 ## Overview
 This project involves the creation of a cluster of nodes using K3s, a lightweight Kubernetes distribution, with Wireguard employed as the VPN solution to connect these nodes securely. The goal of my work was setup a cluster of `edge devices` and ensuring the connection of them with a VPN connection. The repository includes two main folders, namely `k3s` and `Wireguard`, housing Ansible scripts for automating the setup of the cluster.
+![Testo alternativo](ClusterOnVpn/Scheme.jpg)
 
 ## Table of Contents
 
@@ -22,7 +23,6 @@ This project involves the creation of a cluster of nodes using K3s, a lightweigh
     - [Original Sources](#original-sources)
     - [Blog and others references](#blog-and-others-references)
   - [Contributing](#contributing)
-  - [License](#license)
 
 ## Prerequisites
 
@@ -71,7 +71,6 @@ aggiusta
 [Include common issues and their solutions.]
 
 ## Script Credits
-
 The scripts utilized in this project have been adapted and customized based on existing scripts to meet the specific requirements of the cluster setup. While the core functionalities may have originated from external sources, modifications and adaptations have been made to suit the needs of this project.
 
 ### Original Sources 
@@ -84,13 +83,5 @@ The scripts utilized in this project have been adapted and customized based on e
 - https://www.wireguard.com/quickstart/
 - https://docs.k3s.io
 ## Contributing
-
-[Explain how others can contribute to the project.]
-
-## License
-
-[Specify the project's license information.]
-
-Feel free to customize each section based on the specifics of your project and provide detailed instructions, code snippets, and explanations. This structure provides a clear and organized way to document your work.
-
+Feel free to modify and improve everything, just let me know :)
 
