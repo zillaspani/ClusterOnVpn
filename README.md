@@ -1,5 +1,5 @@
 # Project Documentation: 
-#K3s Cluster with Wireguard VPN
+# K3s Cluster with Wireguard VPN
 ## Overview
 This project involves the creation of a cluster of nodes using K3s, a lightweight Kubernetes distribution, with Wireguard employed as the VPN solution to connect these nodes securely. The goal of my work was setup a cluster of `edge devices` and ensuring the connection of them with a VPN connection. The repository includes two main folders, namely `k3s` and `Wireguard`, housing Ansible scripts for automating the setup of the cluster.
 ## Cluster sample
@@ -10,6 +10,7 @@ Following this setup you will have:
 - MetalLB to specify which range of ip address should be assigned to your services. Check `metal_lb_ip_range` in `k3s/inventory/my-cluster1/group_vars/all.yml`.
 ## Table of Contents
 - [Project Documentation:](#project-documentation)
+- [K3s Cluster with Wireguard VPN](#k3s-cluster-with-wireguard-vpn)
   - [Overview](#overview)
   - [Cluster sample](#cluster-sample)
   - [Table of Contents](#table-of-contents)
