@@ -4,7 +4,10 @@
 This project involves the creation of a cluster of nodes using K3s, a lightweight Kubernetes distribution, with Wireguard employed as the VPN solution to connect these nodes securely. The goal of my work was setup a cluster of `edge devices` and ensuring the connection of them with a VPN connection. The repository includes two main folders, namely `k3s` and `Wireguard`, housing Ansible scripts for automating the setup of the cluster.
 ## Cluster sample
 ![Cluster sample](Scheme.jpg)
-
+Following this setup you will have:
+- A cluster with comunication between nodes by secure vpn channel.
+- Controll plane, even with more master nodes, avaliable at the virtual IP address specified in `apiserver_endpoint` in `k3s/inventory/my-cluster1/group_vars/all.yml`.
+- MetalLB to specify which range of ip address should be assigned to your services. Check `metal_lb_ip_range` in `k3s/inventory/my-cluster1/group_vars/all.yml`.
 ## Table of Contents
 - [Project Documentation:](#project-documentation)
   - [Overview](#overview)
@@ -15,7 +18,6 @@ This project involves the creation of a cluster of nodes using K3s, a lightweigh
   - [Step 1: Wireguard VPN](#step-1-wireguard-vpn)
   - [Step 2: K3S Setup](#step-2-k3s-setup)
   - [Usage](#usage)
-  - [Troubleshooting](#troubleshooting)
   - [Script Credits](#script-credits)
     - [Original Sources](#original-sources)
     - [Blog and others references](#blog-and-others-references)
@@ -30,25 +32,55 @@ pip install ansible
 ```
 
 ## Folder Structure
-
+For a correct understanding, read the comments and documentation within the files themselves.
 - **k3s/**
-  - [Description of contents and purpose]
-- **wireguard/**
-  - [Description of contents and purpose]
+  - [ansible.cfg](k3s/ansible.cfg)
+  - [collections](k3s/collections/)
+  - [example](k3s/example/)
+  - [inventory](k3s/inventory/)
+  - [molecule](k3s/molecule/)
+  - [reboot.yml](k3s/reboot.yml)
+  - [requirements.txt](k3s/requirements.txt)
+  - [reset.yml](k3s/reset.yml)
+  - [roles](k3s/roles/)
+  - [site.yml](k3s/site.yml)
+  - [template](k3s/templates/)
 
+- **wireguard/**
+  - [group_vars](wireguard/group_vars/)
+  - [script](wireguard/script/)
+  Folder and script to add peer at the server after their startup. Basically, for each client after its wireguard initializazion Ansible will take their respective public keys and store it on the server. Once did this, with the script we will add the peers using the information stored in `tmp` forder. The information about the peer has the follow structure:
+  File Name = Client ip in the wireguard network
+  File Content = Wireguard Public Key
+  - [inventory.ini](wireguard/inventory.ini) 
+  - [playbook.yml](wireguard/playbook.yml)
 ## Step 1: Wireguard VPN
 [Wireguard setup](wireguard/README.md)
-
 ## Step 2: K3S Setup
 [K3S setup](k3s/README.md)
 
 ## Usage
+To check if everything is working:
+```
+kubectl get nodes -o wide
+```
+To deploy a simple `nginx` container and check its status:
+```
+kubectl apply -f example/deployment.yml
 
-[Provide information on how to use and interact with the deployed K3s cluster.]
+kubectl get deployments
+``` 
+To deploy a sample service for expose your deployment and check it:
+```
+kubectl apply -f example/service.yml
 
-## Troubleshooting
+kubectl get service
+```
+To try a simple request:
+```
+curl <ip specified in the range in conf file>
+```
 
-[Include common issues and their solutions.]
 
 ## Script Credits
 The scripts utilized in this project have been adapted and customized based on existing scripts to meet the specific requirements of the cluster setup. While the core functionalities may have originated from external sources, modifications and adaptations have been made to suit the needs of this project.
