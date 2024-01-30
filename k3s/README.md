@@ -1,30 +1,7 @@
 # Automated build of HA k3s Cluster with `kube-vip` and MetalLB
 
-![Fully Automated K3S etcd High Availability Install](https://img.youtube.com/vi/CbkEWcUZ7zM/0.jpg)
-
-This playbook will build an HA Kubernetes cluster with `k3s`, `kube-vip` and MetalLB via `ansible`.
 
 This is based on the work from [this fork](https://github.com/212850a/k3s-ansible) which is based on the work from [k3s-io/k3s-ansible](https://github.com/k3s-io/k3s-ansible). It uses [kube-vip](https://kube-vip.io/) to create a load balancer for control plane, and [metal-lb](https://metallb.universe.tf/installation/) for its service `LoadBalancer`.
-
-If you want more context on how this works, see:
-
-📄 [Documentation](https://technotim.live/posts/k3s-etcd-ansible/) (including example commands)
-
-📺 [Watch the Video](https://www.youtube.com/watch?v=CbkEWcUZ7zM)
-
-## 📖 k3s Ansible Playbook
-
-Build a Kubernetes cluster using Ansible with k3s. The goal is easily install a HA Kubernetes cluster on machines running:
-
-- [x] Debian (tested on version 11)
-- [x] Ubuntu (tested on version 22.04)
-- [x] Rocky (tested on version 9)
-
-on processor architecture:
-
-- [X] x64
-- [X] arm64
-- [X] armhf
 
 ## ✅ System requirements
 
@@ -101,21 +78,6 @@ scp <user>@master_ip:~/.kube/config ~/.kube/config
 ### 🔨 Testing your cluster
 
 See the commands [here](https://technotim.live/posts/k3s-etcd-ansible/#testing-your-cluster).
-
-### Troubleshooting
-
-Be sure to see [this post](https://github.com/techno-tim/k3s-ansible/discussions/20) on how to troubleshoot common problems
-
-### Testing the playbook using molecule
-
-This playbook includes a [molecule](https://molecule.rtfd.io/)-based test setup.
-It is run automatically in CI, but you can also run the tests locally.
-This might be helpful for quick feedback in a few cases.
-You can find more information about it [here](molecule/README.md).
-
-### Pre-commit Hooks
-
-This repo uses `pre-commit` and `pre-commit-hooks` to lint and fix common style and syntax errors.  Be sure to install python packages and then run `pre-commit install`.  For more information, see [pre-commit](https://pre-commit.com/)
 
 ## Thanks 🤝
 
