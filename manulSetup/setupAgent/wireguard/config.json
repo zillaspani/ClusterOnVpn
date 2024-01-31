@@ -1,0 +1,10 @@
+{
+    "WireguardAddress": "10.0.0.2/32",
+    "HostWireguardAddress": "10.0.0.2",
+    "WireguardNetwork": "10.0.0.0/24",
+    "Port": 51871,
+    "MasterIp":"10.10.10.130",
+    "K3SToken":"K101468e8bb01c9e1397af845d7fc7ab1145bbcb329c5e1bd88f48a641ffd970603::server:ef62726f9c3ad185224f988f02d1b024",
+    "WgMasterPk":"WUJwF+hN48sSUGzvWw15PMNtthfhPiXLjPBNk6B2vmE=",
+    "MasterIpWG":"10.0.0.1"
+}

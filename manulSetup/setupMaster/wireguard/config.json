@@ -1,0 +1,6 @@
+{
+    "WireguardAddress": "10.0.0.1",
+    "WireguardNetwork": "10.0.0.0/24",
+    "Port": 51871
+}
+  

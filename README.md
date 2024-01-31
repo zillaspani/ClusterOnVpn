@@ -55,6 +55,12 @@ For a correct understanding, read the comments and documentation within the file
   File Content = Wireguard Public Key
   - [inventory.ini](wireguard/inventory.ini) 
   - [playbook.yml](wireguard/playbook.yml)
+
+- **manual setup/**
+Script to deploy the cluster without some features provided from the automated one. For instance MetalLB and VIP. This was the first attemps to make this project. 
+ - [setupAgent](manualSetup/setupAgent)
+ - [setupMaster](manulSetup/setupMaster/)
+
 ## Step 1: Wireguard VPN
 [Wireguard setup](wireguard/README.md)
 ## Step 2: K3S Setup

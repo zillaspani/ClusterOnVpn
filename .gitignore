@@ -1,1 +1,11 @@
 /.DS_Store
+manulSetup/setupAgent/wireguard/privatekey
+manulSetup/setupAgent/wireguard/publickey
+manulSetup/setupMaster/wireguard/privatekey
+manulSetup/setupMaster/wireguard/publickey
+manulSetup/setupMaster/wireguard/w0.conf.work
+manulSetup/setupMaster/wireguard/wg0.conf
+manulSetup/setupMaster/k3s/network.conf
+manulSetup/setupAgent/wireguard/wg0.conf
+manulSetup/setupAgent/wireguard/wg0.conf.work
+manulSetup/setupAgent/k3s/node-ip.conf
